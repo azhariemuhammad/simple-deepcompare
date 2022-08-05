@@ -20,33 +20,33 @@ export const deepCompare = <ObjA, ObjB>(
   if (ObjArr.length !== ObjArr2.length) return isEqual;
   for (let i = 0; i < ObjArr.length; i++) {
     isEqual = false;
-    const obj1Item = Object.prototype.hasOwnProperty.call(obj1, ObjArr[i])
+    const objValue = Object.prototype.hasOwnProperty.call(obj1, ObjArr[i])
       ? obj1[ObjArr[i] as keyof TObj<ObjA extends object ? ObjA : ObjA>]
       : {};
-    const obj2Item = Object.prototype.hasOwnProperty.call(obj2, ObjArr[i])
+    const obj2Value = Object.prototype.hasOwnProperty.call(obj2, ObjArr[i])
       ? obj2[ObjArr[i] as keyof TObj<ObjB extends object ? ObjB : ObjB>]
       : {};
 
     if (
-      (typeof obj1Item === "object" && obj1Item !== null) ||
-      (typeof obj2Item === "object" && obj2Item !== null)
+      (typeof objValue === "object" && objValue !== null) ||
+      (typeof obj2Value === "object" && obj2Value !== null)
     ) {
       if (
         deepCompare(
-          obj1Item as TObj<ObjA extends object ? ObjA : ObjA>,
-          obj2Item as TObj<ObjB extends object ? ObjB : ObjB>
+          objValue as TObj<ObjA extends object ? ObjA : ObjA>,
+          obj2Value as TObj<ObjB extends object ? ObjB : ObjB>
         )
       ) {
         isEqual = true;
       }
-    } else if (Array.isArray(obj1Item) || Array.isArray(obj2Item)) {
-      const obj1ItemArr = obj1Item as Array<unknown>;
-      const obj2ItemArr = obj2Item as Array<unknown>;
+    } else if (Array.isArray(objValue) || Array.isArray(obj2Value)) {
+      const objValueArr = objValue as Array<unknown>;
+      const obj2ValueArr = obj2Value as Array<unknown>;
 
       isEqual =
-        obj1ItemArr.length == obj2ItemArr.length &&
-        obj1ItemArr.every((v) => obj2ItemArr.includes(v));
-    } else if (obj1Item === obj2Item) {
+        objValueArr.length == obj2ValueArr.length &&
+        objValueArr.every((v) => obj2ValueArr.includes(v));
+    } else if (objValue === obj2Value) {
       isEqual = true;
     }
   }

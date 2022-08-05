@@ -1,13 +1,13 @@
 import { deepCompare } from "../index";
 
 describe("expect false value", () => {
-  it("number and boolean are not equal", () => {
+  test("number and boolean are not equal", () => {
     expect(
       deepCompare({ a: "something", b: 2 }, { a: "something", b: false })
     ).toBe(false);
   });
 
-  it("array of numbers and boolean are not equal ", () => {
+  test("array of numbers and boolean are not equal ", () => {
     expect(
       deepCompare(
         { a: "something", b: { a: "something", c: { arr: [1, 2, 3] } } },
@@ -18,7 +18,7 @@ describe("expect false value", () => {
 });
 
 describe("expect true value", () => {
-  it("object a and b are equal ", () => {
+  test("object a and b are equal ", () => {
     expect(
       deepCompare(
         {
@@ -47,5 +47,8 @@ describe("expect true value", () => {
         }
       )
     ).toBe(true);
+  });
+  test(`equal objects (different properties "order")`, () => {
+    expect(deepCompare({ a: 1, b: "2" }, { b: "2", a: 1 })).toBe(true);
   });
 });
