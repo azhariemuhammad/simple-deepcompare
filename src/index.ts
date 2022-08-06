@@ -1,8 +1,8 @@
 import { TObj } from "./types";
 
-export const deepCompare = <ObjA, ObjB>(
-  obj1: TObj<ObjA extends object ? ObjA : ObjA>,
-  obj2: TObj<ObjB extends object ? ObjB : ObjB>
+export const deepCompare = <T extends object>(
+  obj1: TObj<T extends object ? object : never>,
+  obj2: TObj<T extends object ? object : never>
 ): boolean => {
   let isEqual = false;
 
@@ -21,10 +21,10 @@ export const deepCompare = <ObjA, ObjB>(
   for (let i = 0; i < ObjArr.length; i++) {
     isEqual = false;
     const objValue = Object.prototype.hasOwnProperty.call(obj1, ObjArr[i])
-      ? obj1[ObjArr[i] as keyof TObj<ObjA extends object ? ObjA : ObjA>]
+      ? obj1[ObjArr[i] as keyof TObj<T extends object ? object : never>]
       : {};
     const obj2Value = Object.prototype.hasOwnProperty.call(obj2, ObjArr[i])
-      ? obj2[ObjArr[i] as keyof TObj<ObjB extends object ? ObjB : ObjB>]
+      ? obj2[ObjArr[i] as keyof TObj<T extends object ? object : never>]
       : {};
 
     if (
@@ -33,8 +33,8 @@ export const deepCompare = <ObjA, ObjB>(
     ) {
       if (
         deepCompare(
-          objValue as TObj<ObjA extends object ? ObjA : ObjA>,
-          obj2Value as TObj<ObjB extends object ? ObjB : ObjB>
+          objValue as TObj<T extends object ? object : never>,
+          obj2Value as TObj<T extends object ? object : never>
         )
       ) {
         isEqual = true;
