@@ -1,8 +1,8 @@
 {
   "name": "simple-deepcompare",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
-  "main": "lib/index.ts",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest",
     "build": "npm run clean && npm run build:cjs",
