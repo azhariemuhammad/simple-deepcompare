@@ -6,6 +6,35 @@ Zero depedencies
 ```js
 console.log(deepCompare({ foo: "bar" }, { foo: "bar" })); // true
 console.log(deepCompare({ foo: "bar" }, { foo: 2 })); // false
+
+console.log(
+  deepCompare(
+    {
+      a: "something",
+      b: { a: "something", c: { arr: [1, 2, 3] } },
+      c: {
+        a: "something",
+        b: {
+          a: "something",
+          c: { bool: false },
+          d: { a: "something", b: { a: "something", c: { bool: false } } },
+        },
+      },
+    },
+    {
+      a: "something",
+      b: { a: "something", c: { arr: [1, 2, 3] } },
+      c: {
+        a: "something",
+        b: {
+          a: "something",
+          c: { bool: false },
+          d: { a: "something", b: { a: "something", c: { bool: false } } },
+        },
+      },
+    }
+  )
+); // true
 ```
 
 ## Installation
