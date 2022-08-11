@@ -1,6 +1,6 @@
 {
   "name": "simple-deepcompare",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -10,7 +10,15 @@
     "clean": "rm -rf lib/*",
     "lint": "eslint . --ext .ts"
   },
-  "keywords": [],
+  "keywords": [
+    "compare objects",
+    "object",
+    "simple deep compare",
+    "deep object compare",
+    "deep object comparison",
+    "object typescript",
+    "typescript"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
