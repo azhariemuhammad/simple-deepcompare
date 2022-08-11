@@ -3,10 +3,6 @@
 This package help you to compare two objects. Built in typescript.
 Zero depedencies
 
-[![NPM Version][npm-version-image]][npm-url]
-[![NPM Install Size][npm-install-size-image]][npm-install-size-url]
-[![NPM Downloads][npm-downloads-image]][npm-downloads-url]
-
 ```js
 console.log(deepCompare({ foo: "bar" }, { foo: "bar" })); // true
 console.log(deepCompare({ foo: "bar" }, { foo: 2 })); // false
